@@ -7,8 +7,6 @@ import org.springframework.ws.server.endpoint.annotation.PayloadRoot;
 import org.springframework.ws.server.endpoint.annotation.RequestPayload;
 import org.springframework.ws.server.endpoint.annotation.ResponsePayload;
 
-import java.util.Map;
-
 @Endpoint
 public class applicationEndPoint {
 
@@ -19,8 +17,7 @@ public class applicationEndPoint {
     public com.hotelreservation.user.UserLoginResponse loginUser (@RequestPayload com.hotelreservation.user.UserLoginRequest loginRequest){
 
         com.hotelreservation.user.UserLoginResponse response = new com.hotelreservation.user.UserLoginResponse();
-        response.setSuccess(loginService.checkCredentials(Map.entry(loginRequest.getUserName(), loginRequest.getPassword())));
-        System.out.println(response);
+        response.setSuccess(loginService.checkCredentials(loginRequest.getUserName(), loginRequest.getPassword()));
         return response;
     }
 }

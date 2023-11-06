@@ -1,32 +1,23 @@
 package com.majdamireh.resvsystem;
 
+import com.majdamireh.resvsystem.userModel.User;
+import com.majdamireh.resvsystem.userModel.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 @Component
 public class LoginService {
+      @Autowired
+      UserRepository userRepository;
 
-    private static HashMap<String,String> users = new HashMap();
-
-    static
+    public Boolean checkCredentials(String userName, String password)
     {
-        users.put("majd", "testing1");
-        users.put("leen","Testing2");
-        users.put("zaidooo", "Testing3");
+        User user = userRepository.findByUserName(userName);
+        System.out.println(user);
+        if(user == null)
+        {
+            return false;
+        }
+        return user.getPassword().equals(password);
     }
-
-    public boolean checkCredentials(Map.Entry<String,String> credentials)
-    {
-      if(!users.containsKey(credentials.getKey()))
-      {
-          return false;
-      }
-
-      return users.get(credentials.getKey()).equals(credentials.getValue());
-    }
-
 }
