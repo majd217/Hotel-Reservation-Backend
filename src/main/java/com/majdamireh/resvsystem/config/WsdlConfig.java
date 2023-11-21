@@ -1,4 +1,4 @@
-package com.majdamireh.resvsystem;
+package com.majdamireh.resvsystem.config;
 
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.ApplicationContext;
@@ -24,7 +24,6 @@ import org.springframework.xml.xsd.XsdSchema;
             messageDispatcherServlet.setTransformWsdlLocations(true);
             return new ServletRegistrationBean(messageDispatcherServlet, "/ws/*");
         }
-
 
         @Bean
         public XsdSchema userSchema()

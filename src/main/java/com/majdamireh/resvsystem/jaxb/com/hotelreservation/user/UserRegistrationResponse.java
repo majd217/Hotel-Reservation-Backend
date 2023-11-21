@@ -9,6 +9,7 @@ package com.hotelreservation.user;
 
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlRootElement;
 import jakarta.xml.bind.annotation.XmlType;
 
@@ -23,7 +24,7 @@ import jakarta.xml.bind.annotation.XmlType;
  *   <complexContent>
  *     <restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       <sequence>
- *         <element name="success" type="{http://www.w3.org/2001/XMLSchema}boolean"/>
+ *         <element name="success" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *       </sequence>
  *     </restriction>
  *   </complexContent>
@@ -39,21 +40,30 @@ import jakarta.xml.bind.annotation.XmlType;
 @XmlRootElement(name = "UserRegistrationResponse")
 public class UserRegistrationResponse {
 
-    protected boolean success;
+    @XmlElement(required = true)
+    protected String success;
 
     /**
      * Gets the value of the success property.
      * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
      */
-    public boolean isSuccess() {
+    public String getSuccess() {
         return success;
     }
 
     /**
      * Sets the value of the success property.
      * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
      */
-    public void setSuccess(boolean value) {
+    public void setSuccess(String value) {
         this.success = value;
     }
 
