@@ -15,7 +15,7 @@
     <xs:element name="UserRegistrationResponse">
         <xs:complexType>
             <xs:sequence>
-                <xs:element name="success" type="xs:boolean"></xs:element>
+                <xs:element name="success" type="xs:string"></xs:element>
             </xs:sequence>
         </xs:complexType>
     </xs:element>
@@ -32,7 +32,7 @@
     <xs:element name="UserLoginResponse">
         <xs:complexType>
             <xs:sequence>
-                <xs:element name="success" type="xs:boolean"></xs:element>
+                <xs:element name="success" type="xs:string"></xs:element>
             </xs:sequence>
         </xs:complexType>
     </xs:element>
