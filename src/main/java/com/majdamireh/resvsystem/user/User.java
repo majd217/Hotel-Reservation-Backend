@@ -1,4 +1,4 @@
-package com.majdamireh.resvsystem.userModel;
+package com.majdamireh.resvsystem.user;
 
 import jakarta.persistence.*;
 
@@ -8,8 +8,18 @@ public class User {
 
     private String userName;
     private String password;
+
+    //generate a new sequence number at each entity
+    @SequenceGenerator(
+            name = "users_id_seq",
+            sequenceName = "users_id_seq",
+            allocationSize = 1
+    )
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(
+            strategy = GenerationType.SEQUENCE,
+            generator = "users_id_seq"
+    )
     private Long id;
     private String email;
 
@@ -19,6 +29,12 @@ public class User {
     public User(String userName, String password) {
         this.userName = userName;
         this.password = password;
+    }
+
+    public User(String userName, String password, String email) {
+        this.userName = userName;
+        this.password = password;
+        this.email = email;
     }
 
     public String getUserName()
@@ -41,7 +57,6 @@ public class User {
         this.password = password;
     }
 
-
     public Long getId()
     {
         return id;
@@ -52,13 +67,10 @@ public class User {
         this.id = id;
     }
 
-
     public String getEmail()
     {
         return email;
     }
-
-
 
     public void setEmail(String email)
     {

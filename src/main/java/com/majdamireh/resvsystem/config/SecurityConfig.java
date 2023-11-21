@@ -1,25 +1,27 @@
-package com.majdamireh.resvsystem;
+package com.majdamireh.resvsystem.config;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
+import org.springframework.security.config.annotation.authentication.configuration.EnableGlobalAuthentication;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
-@EnableWebSecurity
+@EnableGlobalAuthentication
 public class SecurityConfig {
+
+    @Autowired
+    CustomUserDetailsService customUserDetailsService;
 
     @Bean
     public PasswordEncoder passwordEncoder(){
         return new BCryptPasswordEncoder();
     }
-
 
     @Bean
     public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration) throws Exception
@@ -27,14 +29,13 @@ public class SecurityConfig {
         return authenticationConfiguration.getAuthenticationManager();
     }
 
-
-    @Bean
+   @Bean
     SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception
     {
         http.csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests((authorize) ->
-                        authorize.anyRequest().authenticated()
-//                        authorize.requestMatchers(HttpMethod.GET, "/api/**").permitAll()
+                     authorize.anyRequest().permitAll()
+//                        authorize.requestMatchers").permitAll()
 //                                .requestMatchers("/api/auth/**").permitAll()
 //                                .anyRequest().authenticated()
 
@@ -42,4 +43,5 @@ public class SecurityConfig {
 
         return http.build();
     }
+
 }
