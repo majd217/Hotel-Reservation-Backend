@@ -1,5 +1,6 @@
 package com.majdamireh.resvsystem.config;
 
+import com.majdamireh.resvsystem.hotel.HotelRepository;
 import com.majdamireh.resvsystem.user.User;
 import com.majdamireh.resvsystem.user.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +16,9 @@ public class CustomUserDetailsService implements UserDetailsService {
 
     @Autowired
     UserRepository userRepository;
+
+    @Autowired
+    HotelRepository hotelRepository;
     public CustomUserDetailsService(UserRepository userRepository)
     {
         this.userRepository = userRepository;

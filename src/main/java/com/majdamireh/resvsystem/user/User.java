@@ -6,7 +6,10 @@ import jakarta.persistence.*;
 @Table(name = "users")
 public class User {
 
+    @Column(name = "user_name")
     private String userName;
+    @Column(name = "password")
+
     private String password;
 
     //generate a new sequence number at each entity
@@ -21,6 +24,8 @@ public class User {
             generator = "users_id_seq"
     )
     private Long id;
+    @Column(name = "email")
+
     private String email;
 
     protected User() {
