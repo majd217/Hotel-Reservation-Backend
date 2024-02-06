@@ -75,4 +75,24 @@ public class ObjectFactory {
         return new UserLoginResponse();
     }
 
+    /**
+     * Create an instance of {@link NewReservationRequest }
+     * 
+     * @return
+     *     the new instance of {@link NewReservationRequest }
+     */
+    public NewReservationRequest createNewReservationRequest() {
+        return new NewReservationRequest();
+    }
+
+    /**
+     * Create an instance of {@link NewReservationResponse }
+     * 
+     * @return
+     *     the new instance of {@link NewReservationResponse }
+     */
+    public NewReservationResponse createNewReservationResponse() {
+        return new NewReservationResponse();
+    }
+
 }
