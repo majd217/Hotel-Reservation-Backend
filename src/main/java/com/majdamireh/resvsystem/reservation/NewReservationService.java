@@ -47,12 +47,10 @@ public class NewReservationService {
 			}
 			validatedRoomIDsParitions.add(roomIdsPerSize);
 			if (roomPartition.getRoomSizeCount(roomSize) == validatedRoomIDsParitions.size()) {
-				//[1]->1 [1,2]
-				//[1]->2 [1,2]
-				//[2]->3 [3,4,5,6][1,2]
-				//[2]->1 [3,4,5]
-				//
+				
 				return true;
+			} else if (roomPartition.getRoomSizeCount(roomSize) > validatedRoomIDsParitions.size()) {
+			
 			}
 		}
 		
@@ -60,13 +58,14 @@ public class NewReservationService {
 		return true;
 	}
 	
+	
 	public void roomIDsToRequest(List<Set<Integer>> validatedRoomIDsParitions) {
 	
 	}
 }
 
 
-//	public void checkForDates (ArrayList<ArrayList<Integer>> requestedRoomNumbers, int hotelID, Timestamp requestedCheckIn, Timestamp requestedCheckOut)
+//	public void checkForDates (ArrayList<ArrayList<Integer>> requestedRoomNumbers, Set<List<Integer>> result, int hotelID, Timestamp requestedCheckIn, Timestamp requestedCheckOut)
 //	{
 //		List<Reservation> reservations = reservationRepository.findReservationByHotelId(hotelID);
 //		//on the frontend side you would need to calculate the possible dates and display them
