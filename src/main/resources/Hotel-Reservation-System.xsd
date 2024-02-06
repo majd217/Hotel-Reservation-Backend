@@ -21,12 +21,12 @@
     </xs:element>
 
     <xs:element name="UserLoginRequest">
-                <xs:complexType>
-                    <xs:sequence>
-                        <xs:element name="userName" type="xs:string"></xs:element>
-                        <xs:element name="password" type="xs:string"></xs:element>
-                    </xs:sequence>
-                </xs:complexType>
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="userName" type="xs:string"></xs:element>
+                <xs:element name="password" type="xs:string"></xs:element>
+            </xs:sequence>
+        </xs:complexType>
     </xs:element>
 
     <xs:element name="UserLoginResponse">
@@ -37,6 +37,25 @@
         </xs:complexType>
     </xs:element>
 
+    <xs:element name="NewReservationRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="hotelid" type="xs:int"></xs:element>
+                <xs:element name="checkInDate" type="xs:dateTime"></xs:element>
+                <xs:element name="checkOutDate" type="xs:dateTime"></xs:element>
+                <xs:element name="size" type="xs:string"></xs:element>
+
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="NewReservationResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="success" type="xs:string"></xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
 
 
 </xs:schema>
