@@ -18,8 +18,8 @@ public interface ReservationRepository extends JpaRepository<Reservation, Intege
 	@Query(value = "select resv.checkoutdate from reservations resv where resv.hotelid = :hotelid", nativeQuery = true)
 	List<Timestamp> getCheckOutDate(@Param("hotelid") int hotelid);
 	
-	@Query(value = "select * from reservations where hotelid = :hotelid", nativeQuery = true)
-	List<Reservation> findReservationByHotelId(@Param("hotelid") int hotelid);
+	@Query(value = "select * from reservations where hotelid = :hotelid and roomid= :roomid", nativeQuery = true)
+	List<Reservation> findReservationByHotelId(@Param("hotelid") int hotelid, @Param("roomid") int roomid);
 	
 	@Query(value = "select * from reservations where hotelid = :hotelid", nativeQuery = true)
 	List<Reservation> findReservationByHotelIdAndRoomNumber(@Param("hotelid") int hotelid);

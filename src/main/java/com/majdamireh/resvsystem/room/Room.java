@@ -5,7 +5,7 @@ import com.majdamireh.resvsystem.hotel.Hotel;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "com/majdamireh/resvsystem/room")
+@Table(name = "rooms")
 public class Room {
 	
 	public int getRoomid() {

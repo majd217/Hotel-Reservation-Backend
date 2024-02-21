@@ -11,9 +11,11 @@ import java.util.Set;
 public interface RoomRepository extends JpaRepository<Room, Integer> {
 	
 	
-	@Query(value = "select * from rooms where hotelid = :hotelid", nativeQuery = true)
-	List<Room> findByHotelid(@Param("hotelid") int hotelid);
+	@Query(value = "select * from rooms where hotelid = :hotelid AND roomid = :roomid", nativeQuery = true)
+	Room findByHotelidAndRoomid(@Param("hotelid") int hotelid, @Param("roomid") int roomid);
 	
 	@Query(value = "select roomid from rooms where roomsize = :roomsize AND hotelid = :hotelid", nativeQuery = true)
-	Set<Integer> findRoomBySizeAndHotelId(@Param("roomsize") int roomsize, @Param("hotelid") int hotelid);
+	List<Integer> findRoomBySizeAndHotelId(@Param("roomsize") int roomsize, @Param("hotelid") int hotelid);
+
+//	Room findRoomByRoomId(Integer roomid);
 }

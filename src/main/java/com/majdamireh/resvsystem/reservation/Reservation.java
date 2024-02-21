@@ -61,7 +61,7 @@ public class Reservation {
 	private Hotel hotel;
 	
 	@ManyToOne
-	@JoinColumn(name = "roomnumber", referencedColumnName = "roomid")
+	@JoinColumn(name = "roomid", referencedColumnName = "roomid")
 	private Room room;
 	
 	@Column(name = "checkindate")
