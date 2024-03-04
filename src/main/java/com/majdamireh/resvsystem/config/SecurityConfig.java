@@ -15,33 +15,33 @@ import org.springframework.security.web.SecurityFilterChain;
 @EnableGlobalAuthentication
 public class SecurityConfig {
 
-    @Autowired
-    CustomUserDetailsService customUserDetailsService;
-
-    @Bean
-    public PasswordEncoder passwordEncoder(){
-        return new BCryptPasswordEncoder();
-    }
-
-    @Bean
-    public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration) throws Exception
-    {
-        return authenticationConfiguration.getAuthenticationManager();
-    }
-
-   @Bean
-    SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception
-    {
-        http.csrf(csrf -> csrf.disable())
-                .authorizeHttpRequests((authorize) ->
-                     authorize.anyRequest().permitAll()
-//                        authorize.requestMatchers").permitAll()
+//	@Autowired
+//	CustomUserDetailsService customUserDetailsService;
+	
+	@Bean
+	public PasswordEncoder passwordEncoder() {
+		return new BCryptPasswordEncoder();
+	}
+	
+	@Bean
+	public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration) throws Exception {
+		return authenticationConfiguration.getAuthenticationManager();
+	}
+	
+	@Bean
+	SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+		http.csrf(csrf -> csrf.disable())
+				.authorizeHttpRequests((authorize) ->
+								authorize.anyRequest().permitAll()
+//                        authorize.requestMatchers").
 //                                .requestMatchers("/api/auth/**").permitAll()
+//
 //                                .anyRequest().authenticated()
-
-                );
-
-        return http.build();
-    }
-
+				
+				
+				);
+		
+		return http.build();
+	}
+	
 }

@@ -25,25 +25,25 @@ public class RegistrationService {
 	public void saveCredentials(String email, String userName, String password) {
 		
 		if (email == "" || email == null) {
-			throw new CustomRunTimeException(StatusCodes.Email.getMessage(), StatusCodes.Email.getStatusCode());
+			throw new CustomRunTimeException(StatusCodes.Email.getStatusCode());
 		}
 		//should I create another exception?
 		if (userName == "" || userName == null) {
-			throw new CustomRunTimeException(StatusCodes.UserName.getMessage(), StatusCodes.UserName.getStatusCode());
+			throw new CustomRunTimeException(StatusCodes.UserName.getStatusCode());
 		}
 		if (password == "" || password == null) {
-			throw new CustomRunTimeException(StatusCodes.Password.getMessage(), StatusCodes.Password.getStatusCode());
+			throw new CustomRunTimeException(StatusCodes.Password.getStatusCode());
 		}
 		
 		if (userRepository.findByEmailOrUserName(email, userName) != null) {
-			throw new CustomRunTimeException(StatusCodes.UserExists.getMessage(), StatusCodes.UserExists.getStatusCode());
+			throw new CustomRunTimeException(StatusCodes.UserExists.getStatusCode());
 		}
 		
 		try {
 			userRepository.save(new User(userName, passwordEncoder.encode(password), email));
 			return;
 		} catch (IllegalArgumentException | OptimisticLockingFailureException exception) {
-			throw new CustomRunTimeException("", StatusCodes.DBError.getStatusCode());
+			throw new CustomRunTimeException(StatusCodes.DBError.getStatusCode());
 		}
 	}
 }
