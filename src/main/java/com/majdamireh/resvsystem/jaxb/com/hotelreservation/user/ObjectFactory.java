@@ -46,16 +46,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link UserRegistrationResponse }
-     * 
-     * @return
-     *     the new instance of {@link UserRegistrationResponse }
-     */
-    public UserRegistrationResponse createUserRegistrationResponse() {
-        return new UserRegistrationResponse();
-    }
-
-    /**
      * Create an instance of {@link UserLoginRequest }
      * 
      * @return
@@ -66,16 +56,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link UserLoginResponse }
-     * 
-     * @return
-     *     the new instance of {@link UserLoginResponse }
-     */
-    public UserLoginResponse createUserLoginResponse() {
-        return new UserLoginResponse();
-    }
-
-    /**
      * Create an instance of {@link NewReservationRequest }
      * 
      * @return
@@ -83,16 +63,6 @@ public class ObjectFactory {
      */
     public NewReservationRequest createNewReservationRequest() {
         return new NewReservationRequest();
-    }
-
-    /**
-     * Create an instance of {@link NewReservationResponse }
-     * 
-     * @return
-     *     the new instance of {@link NewReservationResponse }
-     */
-    public NewReservationResponse createNewReservationResponse() {
-        return new NewReservationResponse();
     }
 
 }

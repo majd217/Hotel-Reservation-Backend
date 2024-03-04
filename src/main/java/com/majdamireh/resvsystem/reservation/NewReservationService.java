@@ -48,7 +48,7 @@ public class NewReservationService {
 				return;
 			}
 		}
-		throw new CustomRunTimeException("", StatusCodes.InvalidPartition.getStatusCode());
+		throw new CustomRunTimeException(StatusCodes.InvalidPartition.getStatusCode());
 		//add condition to check if both partitions are invalid
 	}
 	
@@ -121,7 +121,7 @@ public class NewReservationService {
 					)
 			);
 		} catch (IllegalArgumentException | OptimisticLockingFailureException e) {
-			throw new CustomRunTimeException("", StatusCodes.DBError.getStatusCode());
+			throw new CustomRunTimeException(StatusCodes.DBError.getStatusCode());
 		}
 	}
 }
