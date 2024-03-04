@@ -29,7 +29,8 @@ import jakarta.xml.bind.annotation.XmlType;
  *         <element name="hotelid" type="{http://www.w3.org/2001/XMLSchema}int"/>
  *         <element name="checkInDate" type="{http://www.w3.org/2001/XMLSchema}dateTime"/>
  *         <element name="checkOutDate" type="{http://www.w3.org/2001/XMLSchema}dateTime"/>
- *         <element name="size" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *         <element name="numberOfRooms" type="{http://www.w3.org/2001/XMLSchema}int"/>
+ *         <element name="numberOfPeople" type="{http://www.w3.org/2001/XMLSchema}int"/>
  *       </sequence>
  *     </restriction>
  *   </complexContent>
@@ -43,7 +44,8 @@ import jakarta.xml.bind.annotation.XmlType;
     "hotelid",
     "checkInDate",
     "checkOutDate",
-    "size"
+    "numberOfRooms",
+    "numberOfPeople"
 })
 @XmlRootElement(name = "NewReservationRequest")
 public class NewReservationRequest {
@@ -55,8 +57,8 @@ public class NewReservationRequest {
     @XmlElement(required = true)
     @XmlSchemaType(name = "dateTime")
     protected XMLGregorianCalendar checkOutDate;
-    @XmlElement(required = true)
-    protected String size;
+    protected int numberOfRooms;
+    protected int numberOfPeople;
 
     /**
      * Gets the value of the hotelid property.
@@ -123,27 +125,35 @@ public class NewReservationRequest {
     }
 
     /**
-     * Gets the value of the size property.
+     * Gets the value of the numberOfRooms property.
      * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
      */
-    public String getSize() {
-        return size;
+    public int getNumberOfRooms() {
+        return numberOfRooms;
     }
 
     /**
-     * Sets the value of the size property.
+     * Sets the value of the numberOfRooms property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
      */
-    public void setSize(String value) {
-        this.size = value;
+    public void setNumberOfRooms(int value) {
+        this.numberOfRooms = value;
+    }
+
+    /**
+     * Gets the value of the numberOfPeople property.
+     * 
+     */
+    public int getNumberOfPeople() {
+        return numberOfPeople;
+    }
+
+    /**
+     * Sets the value of the numberOfPeople property.
+     * 
+     */
+    public void setNumberOfPeople(int value) {
+        this.numberOfPeople = value;
     }
 
 }

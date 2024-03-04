@@ -24,5 +24,7 @@ public interface ReservationRepository extends JpaRepository<Reservation, Intege
 	@Query(value = "select * from reservations where hotelid = :hotelid", nativeQuery = true)
 	List<Reservation> findReservationByHotelIdAndRoomNumber(@Param("hotelid") int hotelid);
 	
+	@Query(value = "SELECT * FROM reservations resv WHERE hotelid = :hotelid AND :roomid = ANY(resv.roomids)", nativeQuery = true)
+	List<Reservation> findReservationByHotelIdtest(@Param("hotelid") int hotelid, @Param("roomid") int roomid);
 	
 }
